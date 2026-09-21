@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>JEV as a Judge</title>
-<meta name="description" content="Decision-only evaluation across tasks and model families: quality, confidence, and cost of a typed decision service compared with sixteen generative and reward-model judges.">
+<meta name="description" content="An economical decision-only judge, and when to escalate: JEV measured against sixteen generative and reward-model judges on preference, correctness, and factuality.">
 <meta name="theme-color" content="#0a0c10">
-<meta property="og:title" content="JEV as a Judge">
-<meta property="og:description" content="When is a verdict and a probability distribution enough? A measured audit of decision-only judging across 17 judge configurations.">
+<meta property="og:title" content="JEV as a Judge: An Economical Decision-Only Judge, and When to Escalate">
+<meta property="og:description" content="A $0.04-per-thousand judge that ties frontier models on preference and evidence-grounded factuality — and a measured map of where to escalate.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -268,8 +268,8 @@ footer p{max-width:72ch;line-height:1.55}
 <header class="hero" id="top">
   <div class="wrap">
     <div class="eyebrow rv in">Preprint · under review at ACL Rolling Review · 2026</div>
-    <h1 class="rv in" style="margin-top:18px">A verdict is cheap. <em>Reliable uncertainty</em> is not.</h1>
-    <p class="sub rv in d1"><b>JEV as a Judge</b> measures a typed decision service — a judge that returns only a label and a probability distribution — against sixteen generative and reward-model configurations on preference, difficult correctness, and evidence-grounded factuality. We ask when output validity, decision quality, and uncertainty reliability come apart, at a measured fee and latency.</p>
+    <h1 class="rv in" style="margin-top:18px">An economical judge, <em>and when to escalate.</em></h1>
+    <p class="sub rv in d1"><b>JEV as a Judge</b> measures a typed decision service — a judge that returns only a verdict and a probability distribution — against sixteen generative and reward-model configurations. On ordinary preference and evidence-grounded factuality it ties GPT-6 at 1/277 of the fee with valid output on every item; the same measurements map exactly where a stronger judge is still worth paying for.</p>
     <p class="authors rv in d2"><span class="names">Yubo Li, Yidi Miao, Ramayya Krishnan, Rema Padman</span><br><span class="aff">Carnegie Mellon University</span></p>
     <div class="cta rv in d3">
       <a class="btn primary" href="#paper-link" id="hero-paper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Read the paper</a>
@@ -294,28 +294,28 @@ footer p{max-width:72ch;line-height:1.55}
     </div>
     <div class="findings">
       <article class="card finding rv">
-        <div class="k"><span>Finding 01</span><span>Probability quality</span></div>
-        <h3>Native probabilities have no consistent reliability advantage</h3>
-        <p>JEV and GPT-6 exchange Brier-score rankings across tasks, and error ranking can favor the less calibrated judge: GPT-6 ranks HaluEval errors better despite a worse Brier score.</p>
-        <div class="mini" aria-hidden="true"><div class="spark" title="Brier score (lower is better): RB, JB, HA"><b class="jev" style="--h:44%"></b><b class="g6" style="--h:41%"></b><b style="--h:0"></b><b class="jev" style="--h:100%"></b><b class="g6" style="--h:32%"></b><b style="--h:0"></b><b class="jev" style="--h:59%"></b><b class="g6" style="--h:82%"></b></div><span class="dim" style="font-size:11.5px;font-family:var(--mono);align-self:center;margin-left:8px">Brier · RB / JB / HA</span></div>
+        <div class="k"><span>Finding 01</span><span>Where JEV is enough</span></div>
+        <h3>Ties the strongest judge on preference and evidence-grounded factuality</h3>
+        <p>RewardBench 92.2 vs 93.5 and HaluEval 87.5 vs 86.7 against GPT-6, both within the confidence interval, with valid output on all 1,312 items. Among hosted judges under $1 per 1,000 judgments, JEV leads on JudgeBench, ties on HaluEval, and sits 0.6 points off the best on RewardBench.</p>
+        <div class="mini" aria-hidden="true"><div class="spark" title="accuracy: JEV vs GPT-6 on RB, HA, existing labels"><b class="jev" style="--h:92%"></b><b class="g6" style="--h:94%"></b><b style="--h:0"></b><b class="jev" style="--h:88%"></b><b class="g6" style="--h:87%"></b><b style="--h:0"></b><b class="jev" style="--h:94%"></b><b class="g6" style="--h:97%"></b></div><span class="dim" style="font-size:11.5px;font-family:var(--mono);align-self:center;margin-left:8px">acc. · RB / HA / labels</span></div>
       </article>
       <article class="card finding rv d1">
-        <div class="k"><span>Finding 02</span><span>Calibration transfer</span></div>
-        <h3>Fitted temperatures can make things worse within a benchmark family</h3>
-        <p>Temperature scaling fitted on the pilot selection set improves JEV's HaluEval NLL but worsens RewardBench and JudgeBench NLL on disjoint extension samples. The fitted temperatures span 0.65 to 4.45.</p>
-        <div class="mini" aria-hidden="true"><div class="spark" title="NLL raw → calibrated"><b style="--h:44%"></b><b style="--h:49%;background:var(--amber)"></b><b style="--h:0"></b><b style="--h:95%"></b><b style="--h:100%;background:var(--amber)"></b><b style="--h:0"></b><b style="--h:70%"></b><b class="jev" style="--h:60%"></b></div><span class="dim" style="font-size:11.5px;font-family:var(--mono);align-self:center;margin-left:8px">NLL raw → fitted</span></div>
+        <div class="k"><span>Finding 02</span><span>When to escalate</span></div>
+        <h3>Hard correctness and misleading style</h3>
+        <p>JudgeBench: 78.6 vs 93.1, a 14.6-point gap concentrated in reasoning and coding. RM-Bench: when the rejected answer is written in the more elaborate style, JEV loses 9.2 points and GPT-6 loses none. Selecting the right answer and resisting style are different abilities.</p>
+        <div class="mini" aria-hidden="true"><div class="spark" title="JB accuracy; RM-Bench hard"><b class="jev" style="--h:79%"></b><b class="g6" style="--h:93%"></b><b style="--h:0"></b><b class="jev" style="--h:75%"></b><b class="g6" style="--h:95%"></b></div><span class="dim" style="font-size:11.5px;font-family:var(--mono);align-self:center;margin-left:8px">JudgeBench · RM-Bench hard</span></div>
       </article>
       <article class="card finding rv d2">
-        <div class="k"><span>Finding 03</span><span>Reference-free prose</span></div>
-        <h3>Near chance, fully confident</h3>
-        <p>On eighty balanced reference-free responses, all three tested judges agree with 52.5–55.0% of existing hallucination labels while reporting mean maximum probabilities of 0.90–0.96.</p>
+        <div class="k"><span>Finding 03</span><span>A judge boundary</span></div>
+        <h3>Reference-free prose: near chance, fully confident — for every judge</h3>
+        <p>On eighty balanced reference-free responses, JEV, GPT-4.1 mini, and GPT-5.4 agree with only 52.5–55.0% of existing hallucination labels while reporting mean maximum probabilities of 0.90–0.96. Do not rely on any tested judge here.</p>
         <div class="mini" aria-hidden="true"><div class="spark" title="accuracy vs confidence"><b class="jev" style="--h:52%"></b><b style="--h:90%;background:#5b6474"></b><b style="--h:0"></b><b style="--h:54%"></b><b style="--h:95%;background:#5b6474"></b><b style="--h:0"></b><b style="--h:55%"></b><b style="--h:96%;background:#5b6474"></b></div><span class="dim" style="font-size:11.5px;font-family:var(--mono);align-self:center;margin-left:8px">accuracy · confidence</span></div>
       </article>
       <article class="card finding rv d3">
-        <div class="k"><span>Finding 04</span><span>Output validity</span></div>
-        <h3>Usable output is a distinct endpoint</h3>
-        <p>JEV satisfies the tested contract on every one of 1,312 base items. Several constrained generative configurations do too; others lose up to 8% of items to provider-side structured-generation failures, contract violations, or exhausted retries.</p>
-        <div class="mini" aria-hidden="true"><div class="spark" title="valid outputs / 1312"><b class="jev" style="--h:100%"></b><b class="g6" style="--h:100%"></b><b style="--h:98%"></b><b style="--h:99%"></b><b style="--h:92%;background:#8a4a2e"></b><b style="--h:99%"></b></div><span class="dim" style="font-size:11.5px;font-family:var(--mono);align-self:center;margin-left:8px">valid / 1,312</span></div>
+        <div class="k"><span>Finding 04</span><span>Confidence as a signal</span></div>
+        <h3>An escalation signal, not a certificate</h3>
+        <p>A frozen JEV → GPT-6 cascade keeps 99% of GPT-6's accuracy at 57% of its fee. But native probabilities are no more reliable than verbalized ones, and fitted temperatures worsened NLL on two of three benchmark families — validate per workload.</p>
+        <div class="mini" aria-hidden="true"><div class="spark" title="NLL raw → calibrated"><b style="--h:44%"></b><b style="--h:49%;background:var(--amber)"></b><b style="--h:0"></b><b style="--h:95%"></b><b style="--h:100%;background:var(--amber)"></b><b style="--h:0"></b><b style="--h:70%"></b><b class="jev" style="--h:60%"></b></div><span class="dim" style="font-size:11.5px;font-family:var(--mono);align-self:center;margin-left:8px">NLL raw → fitted</span></div>
       </article>
     </div>
   </div>
@@ -512,8 +512,8 @@ footer p{max-width:72ch;line-height:1.55}
       <div class="rv d1">
         <h3 style="font-size:16px;font-family:var(--mono);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)">BibTeX</h3>
         <pre style="margin-top:12px" id="bib">@misc{li2026jevjudge,
-  title   = {{JEV} as a Judge: Decision-Only Evaluation
-             Across Tasks and Model Families},
+  title   = {{JEV} as a Judge: An Economical Decision-Only
+             Judge, and When to Escalate},
   author  = {Li, Yubo and Miao, Yidi and Krishnan, Ramayya
              and Padman, Rema},
   year    = {2026},
