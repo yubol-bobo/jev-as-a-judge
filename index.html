@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JEV as a Judge</title>
-<meta name="description" content="An economical decision-only judge, and when to escalate: JEV measured against sixteen generative and reward-model judges on preference, correctness, and factuality.">
+<title>JEV-as-a-Judge</title>
+<meta name="description" content="Accept when confident, escalate when unsure: a decision-only judge (TypeSafe JEV) measured against sixteen generative and reward-model judges on preference, correctness, and factuality, with blinded human adjudication.">
 <meta name="theme-color" content="#0a0c10">
-<meta property="og:title" content="JEV as a Judge: An Economical Decision-Only Judge, and When to Escalate">
-<meta property="og:description" content="A $0.04-per-thousand judge that ties frontier models on preference and evidence-grounded factuality — and a measured map of where to escalate.">
+<meta property="og:title" content="JEV-as-a-Judge: Accept When Confident, Escalate When Unsure">
+<meta property="og:description" content="A $0.04-per-thousand judge within three points of the strongest judges on preference and evidence-grounded factuality — and a measured map of where to escalate.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -254,7 +254,7 @@ footer p{max-width:72ch;line-height:1.55}
 
 <nav class="nav" aria-label="Site">
   <div class="wrap">
-    <a class="brand" href="#top"><i></i>JEV as a Judge</a>
+    <a class="brand" href="#top"><i></i>JEV-as-a-Judge</a>
     <div class="navlinks">
       <a href="#findings">Findings</a><a href="#quality">Quality</a><a href="#cost">Cost</a><a href="#style">Style</a><a href="#confidence">Confidence</a><a href="#cascade">Cascade</a><a href="#cite">Cite</a>
     </div>
@@ -267,9 +267,9 @@ footer p{max-width:72ch;line-height:1.55}
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="eyebrow rv in">Preprint · under review at ACL Rolling Review · 2026</div>
-    <h1 class="rv in" style="margin-top:18px">An economical judge, <em>and when to escalate.</em></h1>
-    <p class="sub rv in d1"><b>JEV as a Judge</b> measures a typed decision service — a judge that returns only a verdict and a probability distribution — against sixteen generative and reward-model configurations. On ordinary preference and evidence-grounded factuality it ties GPT-6 at 1/277 of the fee with valid output on every item; the same measurements map exactly where a stronger judge is still worth paying for.</p>
+    <div class="eyebrow rv in">Preprint · September 2026</div>
+    <h1 class="rv in" style="margin-top:18px">Accept when confident, <em>escalate when unsure.</em></h1>
+    <p class="sub rv in d1"><b>JEV-as-a-Judge</b> measures a typed decision service — a judge that returns only a verdict and a probability distribution — against sixteen generative and reward-model configurations. On ordinary preference and evidence-grounded factuality it stays within three points of GPT-6 at 0.36% of the fee, with valid output on every item; the same measurements map exactly where a stronger judge is still worth paying for.</p>
     <p class="authors rv in d2"><span class="names">Yubo Li, Yidi Miao, Ramayya Krishnan, Rema Padman</span><br><span class="aff">Carnegie Mellon University</span></p>
     <div class="cta rv in d3">
       <a class="btn primary" href="#paper-link" id="hero-paper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Read the paper</a>
@@ -296,13 +296,13 @@ footer p{max-width:72ch;line-height:1.55}
       <article class="card finding rv">
         <div class="k"><span>Finding 01</span><span>Where JEV is enough</span></div>
         <h3>Ties the strongest judge on preference and evidence-grounded factuality</h3>
-        <p>RewardBench 92.2 vs 93.5 and HaluEval 87.5 vs 86.7 against GPT-6, both within the confidence interval, with valid output on all 1,312 items. Among hosted judges under $1 per 1,000 judgments, JEV leads on JudgeBench, ties on HaluEval, and sits 0.6 points off the best on RewardBench.</p>
+        <p>RewardBench 92.2 vs 93.5 and HaluEval 87.5 vs 86.7 against GPT-6, both within the confidence interval on benchmark labels, with valid output on all 1,312 items. A blinded human adjudication of every item where the two judges differ puts GPT-6 two to three points ahead on these tasks — and finds that 24 of the 26 HaluEval items both judges “miss” carry labels the evidence does not support. Among hosted judges under $1 per 1,000 judgments, JEV leads on JudgeBench, ties on HaluEval, and sits 0.6 points off the best on RewardBench.</p>
         <div class="mini" aria-hidden="true"><div class="spark" title="accuracy: JEV vs GPT-6 on RB, HA, existing labels"><b class="jev" style="--h:92%"></b><b class="g6" style="--h:94%"></b><b style="--h:0"></b><b class="jev" style="--h:88%"></b><b class="g6" style="--h:87%"></b><b style="--h:0"></b><b class="jev" style="--h:94%"></b><b class="g6" style="--h:97%"></b></div><span class="dim" style="font-size:11.5px;font-family:var(--mono);align-self:center;margin-left:8px">acc. · RB / HA / labels</span></div>
       </article>
       <article class="card finding rv d1">
         <div class="k"><span>Finding 02</span><span>When to escalate</span></div>
         <h3>Hard correctness and misleading style</h3>
-        <p>JudgeBench: 78.6 vs 93.1, a 14.6-point gap concentrated in reasoning and coding. RM-Bench: when the rejected answer is written in the more elaborate style, JEV loses 9.2 points and GPT-6 loses none. Selecting the right answer and resisting style are different abilities.</p>
+        <p>JudgeBench: 78.6 vs 93.1, a 14.6-point gap concentrated in reasoning and coding — and it is not label noise: blinded human adjudication sides with GPT-6 on 57 of the 69 disputed items and with JEV on one (human-adjudicated gap −16.0, interval −20.0 to −12.3). RM-Bench: when the rejected answer is written in the more elaborate style, JEV loses 9.2 points and GPT-6 loses none. Selecting the right answer and resisting style are different abilities.</p>
         <div class="mini" aria-hidden="true"><div class="spark" title="JB accuracy; RM-Bench hard"><b class="jev" style="--h:79%"></b><b class="g6" style="--h:93%"></b><b style="--h:0"></b><b class="jev" style="--h:75%"></b><b class="g6" style="--h:95%"></b></div><span class="dim" style="font-size:11.5px;font-family:var(--mono);align-self:center;margin-left:8px">JudgeBench · RM-Bench hard</span></div>
       </article>
       <article class="card finding rv d2">
@@ -325,7 +325,7 @@ footer p{max-width:72ch;line-height:1.55}
   <div class="wrap">
     <div class="sec-head rv">
       <h2>Task fit matters more than a universal ranking</h2>
-      <p class="lede">Seventeen configurations, base-order accuracy, invalid outputs counted as errors. Switch the task: the order re-sorts. JEV is <b>within 1.3 points of GPT-6 on RewardBench</b> and <b>14.6 points behind on JudgeBench</b> (95% source-cluster interval −18.9 to −10.3).</p>
+      <p class="lede">Seventeen configurations, base-order accuracy, invalid outputs counted as errors. Hosted reasoning models run at low reasoning effort (Qwen3.6 at its default); local Qwen uses non-thinking inference. Switch the task: the order re-sorts. JEV is <b>within 1.3 points of GPT-6 on RewardBench</b> and <b>14.6 points behind on JudgeBench</b> (95% source-cluster interval −18.9 to −10.3); under blinded human adjudication of the disputed items the gaps are 3.0 and 16.0 points.</p>
     </div>
     <div class="card rv">
       <div class="toolbar">
@@ -335,7 +335,7 @@ footer p{max-width:72ch;line-height:1.55}
           <button aria-pressed="false" data-task="ha">HaluEval <span class="dim">240</span></button>
           <button aria-pressed="false" data-task="lab">Existing labels <span class="dim">150</span></button>
         </div>
-        <div class="legend"><span><i style="background:var(--jev)"></i>JEV 1.13</span><span><i style="background:var(--gpt6)"></i>GPT-6 Astra (low)</span><span><i style="background:var(--rm)"></i>Reward models</span><span><i style="background:var(--other)"></i>Other generative judges</span></div>
+        <div class="legend"><span><i style="background:var(--jev)"></i>JEV 1.13</span><span><i style="background:var(--gpt6)"></i>GPT-6 Astra</span><span><i style="background:var(--rm)"></i>Reward models</span><span><i style="background:var(--other)"></i>Other generative judges</span></div>
       </div>
       <div class="acc" id="acc"></div>
       <div class="axis"><span></span><div class="t" id="acc-axis"></div><span></span></div>
@@ -393,7 +393,7 @@ footer p{max-width:72ch;line-height:1.55}
         <h3>RM-Bench by style condition</h3>
         <p class="muted" style="font-size:13.5px">Accuracy (%), 480 judgments per condition. Hard: the less elaborate answer is the preferred one.</p>
         <svg class="chart" id="rmb" viewBox="0 0 520 300" role="img" aria-label="RM-Bench accuracy by style condition"></svg>
-        <div class="legend" style="margin-top:8px"><span><i style="background:var(--jev)"></i>JEV</span><span><i style="background:var(--gpt6)"></i>GPT-6 Astra (low)</span><span><i style="background:var(--rm)"></i>Skywork-Reward-V2 8B</span></div>
+        <div class="legend" style="margin-top:8px"><span><i style="background:var(--jev)"></i>JEV</span><span><i style="background:var(--gpt6)"></i>GPT-6 Astra</span><span><i style="background:var(--rm)"></i>Skywork-Reward-V2 8B</span></div>
         <p class="cap">Hard-minus-normal change: JEV −9.2 [−14.0, −4.8], GPT-6 +1.3 [−1.9, 4.2], Skywork −20.6 [−26.9, −14.4]. On RewardBench 2 four-way selection the three score 73.0 / 75.0 / 79.0.</p>
       </div>
       <div class="card rv d1">
@@ -450,7 +450,7 @@ footer p{max-width:72ch;line-height:1.55}
   <div class="wrap">
     <div class="sec-head rv">
       <h2>When does escalation pay?</h2>
-      <p class="lede">A frozen two-order gate: JEV judges each pair in both orders, averages the aligned probability, and keeps the decision when it is confident; everything else goes to a fallback judge. Thresholds were selected on 96 pilot pairs and evaluated on <b>510 disjoint extension pairs</b>.</p>
+      <p class="lede">JEV's accuracy rises monotonically with its confidence — pooled over the three public tasks, from 48% below <i>q</i> = 0.6 to 99% at <i>q</i> = 1 — and its gap to GPT-6 sits almost entirely in the low-confidence decisions: on the items JEV accepts at <i>q</i> ≥ 0.9 the two judges are within a point of each other, on the rest GPT-6 leads by 15. So: accept when confident, escalate the rest. A frozen two-order gate does exactly that — JEV judges each pair in both orders, averages the aligned probability, and keeps the decision when it is confident; everything else goes to a fallback judge. Thresholds were selected on 96 pilot pairs and evaluated on <b>510 disjoint extension pairs</b>. The signal weakens where JEV is confidently misled: on RM-Bench's style-adversarial pairs its error-detection AUROC drops from 0.90 to 0.77, and the cascade needs a higher threshold to keep pace.</p>
     </div>
     <div class="card rv">
       <h3>JEV → GPT-6 at threshold 0.9</h3>
@@ -467,12 +467,12 @@ footer p{max-width:72ch;line-height:1.55}
         <div class="tscroll"><table>
           <thead><tr><th>Fallback judge</th><th class="n">τ</th><th class="n">Accepted by JEV</th><th class="n">Cascade acc.</th><th class="n">Fallback alone</th><th class="n">Δ (pp) [95% CI]</th><th class="n">Fee ratio (reported / upper)</th></tr></thead>
           <tbody>
-            <tr><td>GPT-5.4 low</td><td class="n">0.90</td><td class="n">53.7%</td><td class="n">91.4</td><td class="n">91.6</td><td class="n">−0.2 [−1.2, 0.8]</td><td class="n">0.639 / 1.096</td></tr>
-            <tr><td>GPT-5.6 Sol low</td><td class="n">0.70</td><td class="n">81.0%</td><td class="n">91.0</td><td class="n">93.3</td><td class="n">−2.4 [−4.5, −0.2]</td><td class="n">0.288 / 0.380</td></tr>
-            <tr class="hl"><td>GPT-6 Astra low</td><td class="n">0.90</td><td class="n">53.7%</td><td class="n">92.5</td><td class="n">93.1</td><td class="n">−0.6 [−1.8, 0.6]</td><td class="n">0.568 / 0.622</td></tr>
-            <tr><td>Claude Sonnet 5 low</td><td class="n">0.60</td><td class="n">90.8%</td><td class="n">88.0</td><td class="n">89.2</td><td class="n">−1.2 [−4.0, 1.8]</td><td class="n">0.152 / 0.152</td></tr>
-            <tr><td>Gemini 3 Flash low</td><td class="n">0.60</td><td class="n">90.8%</td><td class="n">87.1</td><td class="n">82.9</td><td class="n">+4.1 [1.2, 7.2]</td><td class="n">0.281 / 0.282</td></tr>
-            <tr><td>Gemini 3.1 Pro low</td><td class="n">0.90</td><td class="n">53.7%</td><td class="n">89.6</td><td class="n">90.4</td><td class="n">−0.8 [−1.8, 0.2]</td><td class="n">0.594 / 0.635</td></tr>
+            <tr><td>GPT-5.4</td><td class="n">0.90</td><td class="n">53.7%</td><td class="n">91.4</td><td class="n">91.6</td><td class="n">−0.2 [−1.2, 0.8]</td><td class="n">0.639 / 1.096</td></tr>
+            <tr><td>GPT-5.6 Sol</td><td class="n">0.70</td><td class="n">81.0%</td><td class="n">91.0</td><td class="n">93.3</td><td class="n">−2.4 [−4.5, −0.2]</td><td class="n">0.288 / 0.380</td></tr>
+            <tr class="hl"><td>GPT-6 Astra</td><td class="n">0.90</td><td class="n">53.7%</td><td class="n">92.5</td><td class="n">93.1</td><td class="n">−0.6 [−1.8, 0.6]</td><td class="n">0.568 / 0.622</td></tr>
+            <tr><td>Claude Sonnet 5</td><td class="n">0.60</td><td class="n">90.8%</td><td class="n">88.0</td><td class="n">89.2</td><td class="n">−1.2 [−4.0, 1.8]</td><td class="n">0.152 / 0.152</td></tr>
+            <tr><td>Gemini 3 Flash</td><td class="n">0.60</td><td class="n">90.8%</td><td class="n">87.1</td><td class="n">82.9</td><td class="n">+4.1 [1.2, 7.2]</td><td class="n">0.281 / 0.282</td></tr>
+            <tr><td>Gemini 3.1 Pro</td><td class="n">0.90</td><td class="n">53.7%</td><td class="n">89.6</td><td class="n">90.4</td><td class="n">−0.8 [−1.8, 0.2]</td><td class="n">0.594 / 0.635</td></tr>
           </tbody></table></div>
         <p class="cap">The GPT-5.6 policy accepts 81% of pairs but loses 2.35 points on transfer — more than the two-point tolerance it was selected under. Tolerances must be re-checked on the target workload; these are offline simulations, not live cascade latency.</p>
       </details>
@@ -512,12 +512,12 @@ footer p{max-width:72ch;line-height:1.55}
       <div class="rv d1">
         <h3 style="font-size:16px;font-family:var(--mono);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)">BibTeX</h3>
         <pre style="margin-top:12px" id="bib">@misc{li2026jevjudge,
-  title   = {{JEV} as a Judge: An Economical Decision-Only
-             Judge, and When to Escalate},
+  title   = {{JEV}-as-a-Judge: Accept When Confident,
+             Escalate When Unsure},
   author  = {Li, Yubo and Miao, Yidi and Krishnan, Ramayya
              and Padman, Rema},
   year    = {2026},
-  note    = {Under review}
+  note    = {Preprint}
 }</pre>
         <button class="btn" style="margin-top:10px" id="copybib" type="button">Copy BibTeX</button>
       </div>
@@ -540,18 +540,18 @@ const CONFIGS = [
  ['JEV 1.13','jev',92.2,78.6,87.5,94.0],
  ['GPT-4.1 mini','other',89.0,64.0,86.2,84.0],
  ['GPT-4.1','other',90.8,71.7,87.1,92.0],
- ['GPT-5.2 low','other',92.0,88.9,89.6,95.3],
- ['GPT-5.4 low','other',93.0,90.9,88.3,92.7],
- ['GPT-5.6 Sol low','other',93.2,93.1,89.2,95.3],
- ['GPT-6 Astra low','gpt6',93.5,93.1,86.7,96.7],
- ['GPT-OSS 120B low','other',87.5,71.1,87.5,95.3],
+ ['GPT-5.2','other',92.0,88.9,89.6,95.3],
+ ['GPT-5.4','other',93.0,90.9,88.3,92.7],
+ ['GPT-5.6 Sol','other',93.2,93.1,89.2,95.3],
+ ['GPT-6 Astra','gpt6',93.5,93.1,86.7,96.7],
+ ['GPT-OSS 120B','other',87.5,71.1,87.5,95.3],
  ['Qwen3 32B (local)','other',88.2,66.9,81.7,94.0],
  ['Qwen3.5 27B (local)','other',90.5,77.4,85.0,92.7],
- ['Qwen3.6 27B default','other',87.0,72.3,83.8,93.3],
- ['Qwen3.8 27B low','other',93.8,74.3,87.9,95.3],
- ['Claude Sonnet 5 low','other',91.2,88.9,85.8,94.7],
- ['Gemini 3 Flash low','other',92.8,76.0,83.3,95.3],
- ['Gemini 3.1 Pro low','other',94.5,87.4,87.1,94.7],
+ ['Qwen3.6 27B','other',87.0,72.3,83.8,93.3],
+ ['Qwen3.8 27B','other',93.8,74.3,87.9,95.3],
+ ['Claude Sonnet 5','other',91.2,88.9,85.8,94.7],
+ ['Gemini 3 Flash','other',92.8,76.0,83.3,95.3],
+ ['Gemini 3.1 Pro','other',94.5,87.4,87.1,94.7],
  ['PairRM (local)','rm',68.0,54.3,null,null],
  ['Skywork-Reward-V2 8B (local)','rm',94.0,71.1,null,null],
 ];
@@ -561,19 +561,19 @@ const TASKS = {rb:{i:2,name:'RewardBench',n:400,min:60,cap:'Balanced 400-pair sa
                lab:{i:5,name:'Existing labels',n:150,min:75,cap:'150 existing final-answer adjudications (correct / incorrect / no-answer). JEV macro-F1 0.923; GPT-6 0.947. Reward models do not apply to this task.'}};
 const PANEL = [
  ['JEV 1.13','jev',0.152,0.244,0.044,0.044],['GPT-4.1 mini','other',0.548,0.740,0.390,0.390],['GPT-4.1','other',0.581,0.808,1.947,1.947],
- ['GPT-5.2 low','other',1.676,10.082,4.193,4.193],['GPT-5.4 low','other',1.443,5.649,4.808,4.808],['GPT-5.6 Sol low','other',1.743,8.167,6.087,6.087],
- ['GPT-6 Astra low','gpt6',1.885,3.861,12.182,12.182],['GPT-OSS 120B low','other',0.547,1.699,0.225,0.433],['Qwen3.6 27B default','other',1.964,23.172,3.165,8.469],
- ['Qwen3.8 27B low','other',1.521,3.740,3.021,5.018],['Claude Sonnet 5 low','other',2.284,14.967,5.890,5.890],['Gemini 3 Flash low','other',0.867,1.312,0.508,0.508],
- ['Gemini 3.1 Pro low','other',3.140,9.093,5.043,5.043]];
+ ['GPT-5.2','other',1.676,10.082,4.193,4.193],['GPT-5.4','other',1.443,5.649,4.808,4.808],['GPT-5.6 Sol','other',1.743,8.167,6.087,6.087],
+ ['GPT-6 Astra','gpt6',1.885,3.861,12.182,12.182],['GPT-OSS 120B','other',0.547,1.699,0.225,0.433],['Qwen3.6 27B','other',1.964,23.172,3.165,8.469],
+ ['Qwen3.8 27B','other',1.521,3.740,3.021,5.018],['Claude Sonnet 5','other',2.284,14.967,5.890,5.890],['Gemini 3 Flash','other',0.867,1.312,0.508,0.508],
+ ['Gemini 3.1 Pro','other',3.140,9.093,5.043,5.043]];
 const DIFFS = [['RewardBench',-1.25,-3.8,1.5],['HaluEval',0.83,-1.25,2.92],['JudgeBench',-14.6,-18.9,-10.3]];
 const DOMAINS = [['Knowledge',154,84.4,90.9],['Math',56,82.1,91.1],['Coding',42,76.2,97.6],['Reasoning',98,68.4,95.9]];
 const RMB = {cond:['Hard','Normal','Easy'],jev:[74.8,84.0,87.3],gpt6:[94.6,93.3,92.5],rm:[69.6,90.2,93.8]};
-const HM = [['JEV 1.13',[[88.1,78.8,70.6],[88.1,81.9,75.0],[90.0,83.8,81.9]]],['GPT-6 Astra low',[[97.5,96.2,95.6],[92.5,91.2,91.9],[93.8,91.2,91.2]]],['Skywork V2 8B',[[92.5,73.8,58.8],[91.2,87.5,76.2],[96.2,93.8,90.6]]]];
-const BULLETS = [['JEV 1.13','jev',52.5,0.903],['GPT-4.1 mini','other',53.8,0.949],['GPT-5.4 low','other',55.0,0.964]];
+const HM = [['JEV 1.13',[[88.1,78.8,70.6],[88.1,81.9,75.0],[90.0,83.8,81.9]]],['GPT-6 Astra',[[97.5,96.2,95.6],[92.5,91.2,91.9],[93.8,91.2,91.2]]],['Skywork V2 8B',[[92.5,73.8,58.8],[91.2,87.5,76.2],[96.2,93.8,90.6]]]];
+const BULLETS = [['JEV 1.13','jev',52.5,0.903],['GPT-4.1 mini','other',53.8,0.949],['GPT-5.4','other',55.0,0.964]];
 const BRIER = [['RewardBench',0.111,0.104,0.869,0.891],['JudgeBench',0.297,0.095,0.745,0.907],['HaluEval',0.176,0.245,0.863,0.899]];
-const VALID = [['JEV 1.13',1312,0,0,0,'78.6 / 78.6',true],['GPT-5.4 low',1310,0,0,2,'90.9 / 91.1'],['GPT-5.6 Sol low',1312,0,0,0,'93.1 / 93.1'],['GPT-6 Astra low',1312,0,0,0,'93.1 / 93.1'],
- ['GPT-OSS 120B low',1289,22,0,1,'71.1 / 73.2'],['Qwen3.6 27B default',1206,16,57,33,'72.3 / 87.5'],['Qwen3.8 27B low',1303,1,7,1,'74.3 / 76.2'],['Claude Sonnet 5 low',1308,0,4,0,'88.9 / 89.4'],
- ['Gemini 3 Flash low',1312,0,0,0,'76.0 / 76.0'],['Gemini 3.1 Pro low',1312,0,0,0,'87.4 / 87.4']];
+const VALID = [['JEV 1.13',1312,0,0,0,'78.6 / 78.6',true],['GPT-5.4',1310,0,0,2,'90.9 / 91.1'],['GPT-5.6 Sol',1312,0,0,0,'93.1 / 93.1'],['GPT-6 Astra',1312,0,0,0,'93.1 / 93.1'],
+ ['GPT-OSS 120B',1289,22,0,1,'71.1 / 73.2'],['Qwen3.6 27B',1206,16,57,33,'72.3 / 87.5'],['Qwen3.8 27B',1303,1,7,1,'74.3 / 76.2'],['Claude Sonnet 5',1308,0,4,0,'88.9 / 89.4'],
+ ['Gemini 3 Flash',1312,0,0,0,'76.0 / 76.0'],['Gemini 3.1 Pro',1312,0,0,0,'87.4 / 87.4']];
 
 const C = {jev:'var(--jev)',gpt6:'var(--gpt6)',rm:'var(--rm)',other:'var(--other)'};
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -742,7 +742,7 @@ if(reduce){layoutAcc();document.querySelectorAll('.rv').forEach(el=>el.classList
 $('#copybib').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#bib').textContent);$('#copybib').textContent='Copied';setTimeout(()=>$('#copybib').textContent='Copy BibTeX',1600);}catch(e){$('#copybib').textContent='Select and copy';}});
 
 /* ---------- links (edit these two lines) ---------- */
-const PAPER_URL='#paper-link';   // e.g. 'paper.pdf' or an arXiv URL
+const PAPER_URL='paper.pdf';     // switch to the arXiv URL once listed
 const CODE_URL='https://github.com/yubol-bobo/jev-as-a-judge';     // repository (code & supplement)
 ['nav-paper','hero-paper','cite-paper'].forEach(id=>$('#'+id).href=PAPER_URL);['nav-code','hero-code','cite-code'].forEach(id=>$('#'+id).href=CODE_URL);
 </script>

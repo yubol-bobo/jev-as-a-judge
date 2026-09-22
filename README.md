@@ -1,4 +1,4 @@
-# JEV as a Judge — project page
+# JEV-as-a-Judge — project page
 
 Single static page (`index.html`), no build step, no dependencies beyond Google Fonts. All numbers are typed into the `DATA` block at the bottom of `index.html` and come from the manuscript of 2026-09-21.
 
@@ -23,7 +23,7 @@ If the repository also holds code, put the page in a `docs/` folder and choose `
 At the very end of `index.html`:
 
 ```js
-const PAPER_URL='#paper-link';   // e.g. 'paper.pdf' (drop the PDF next to index.html) or an arXiv URL
+const PAPER_URL='paper.pdf';     // the PDF next to index.html; switch to the arXiv URL once listed
 const CODE_URL='#code-link';     // e.g. 'https://github.com/yubol-bobo/jev-as-a-judge'
 ```
 
@@ -31,6 +31,6 @@ Every Paper / Code button on the page reads these two constants. The BibTeX bloc
 
 ## Notes
 
-- The manuscript is under anonymous review at ACL Rolling Review. Current ACL policy has no anonymity period, so a public page is allowed, but do not advertise the submission to reviewers (no posts aimed at the reviewing community) while it is under review. The page says "under review" and makes no acceptance claim.
+- The manuscript is a preprint (September 2026); an ACL Rolling Review submission is planned. Current ACL policy has no anonymity period, so a public page is allowed, but once the paper is under review do not advertise it to the reviewing community. The page says "Preprint" and makes no acceptance claim. `paper.pdf` is the current author version; replace `PAPER_URL` with the arXiv link once it is listed.
 - Prices, latencies, and model identifiers reflect September 2026; the footer says so.
 - Motion respects `prefers-reduced-motion`. Every chart has a hover tooltip; the accuracy chart has a "View data" table.
