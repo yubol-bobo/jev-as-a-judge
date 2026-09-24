@@ -3,11 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JEV-as-a-Judge</title>
+<title>JEV-as-a-Judge: Accept When Confident, Escalate When Unsure</title>
 <meta name="description" content="Accept when confident, escalate when unsure: a decision-only judge (TypeSafe JEV) measured against sixteen generative and reward-model judges on preference, correctness, and factuality, with blinded human adjudication.">
 <meta name="theme-color" content="#0a0c10">
+<link rel="canonical" href="https://yubol-bobo.github.io/jev-as-a-judge/">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
 <meta property="og:title" content="JEV-as-a-Judge: Accept When Confident, Escalate When Unsure">
 <meta property="og:description" content="A $0.04-per-thousand judge within three points of the strongest judges on preference and evidence-grounded factuality — and a measured map of where to escalate.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yubol-bobo.github.io/jev-as-a-judge/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -249,6 +253,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-bet
 footer p{max-width:72ch;line-height:1.55}
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line-2),transparent);margin:96px 0 0}
 </style>
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 
@@ -259,21 +264,23 @@ footer p{max-width:72ch;line-height:1.55}
       <a href="#findings">Findings</a><a href="#quality">Quality</a><a href="#cost">Cost</a><a href="#style">Style</a><a href="#confidence">Confidence</a><a href="#cascade">Cascade</a><a href="#cite">Cite</a>
     </div>
     <div class="navbtns">
-      <a class="btn" href="#paper-link" id="nav-paper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Paper</a>
-      <a class="btn" href="#code-link" id="nav-code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>Code</a>
+      <a class="btn" href="paper.html" id="nav-paper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Paper</a>
+      <a class="btn" href="https://github.com/yubol-bobo/jev-as-a-judge" id="nav-code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>GitHub</a>
     </div>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="eyebrow rv in">Preprint · September 2026</div>
+    <div class="eyebrow rv in">Preprint · <time datetime="2026-09-22">22 September 2026</time> · <a href="https://arxiv.org/abs/2609.26550">arXiv:2609.26550</a></div>
     <h1 class="rv in" style="margin-top:18px">Accept when confident, <em>escalate when unsure.</em></h1>
     <p class="sub rv in d1"><b>JEV-as-a-Judge</b> measures a typed decision service — a judge that returns only a verdict and a probability distribution — against sixteen generative and reward-model configurations. On ordinary preference and evidence-grounded factuality it stays within three points of GPT-6 at 0.36% of the fee, with valid output on every item; the same measurements map exactly where a stronger judge is still worth paying for.</p>
     <p class="authors rv in d2"><span class="names">Yubo Li, Yidi Miao, Ramayya Krishnan, Rema Padman</span><br><span class="aff">Carnegie Mellon University</span></p>
     <div class="cta rv in d3">
-      <a class="btn primary" href="#paper-link" id="hero-paper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Read the paper</a>
-      <a class="btn" href="#code-link" id="hero-code">Code &amp; supplement</a>
+      <a class="btn primary" href="paper.pdf" id="hero-paper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Read the paper (PDF)</a>
+      <a class="btn" href="paper.html">Abstract &amp; paper details</a>
+      <a class="btn" href="https://arxiv.org/abs/2609.26550">arXiv</a>
+      <a class="btn" href="https://github.com/yubol-bobo/jev-as-a-judge" id="hero-code">Project repository</a>
       <a class="btn" href="#cite">BibTeX</a>
     </div>
     <div class="stats rv in d4">
@@ -505,8 +512,9 @@ footer p{max-width:72ch;line-height:1.55}
         <p class="muted" style="margin-top:14px;max-width:52ch">Frozen requests, retained failed attempts, complete probability traces, a separate timing panel, and pre-specified routing thresholds. The anonymous supplement reproduces every public-task number offline — no API calls, no GPU. Prompts, schemas, and an exact JEV request/response are in the paper's appendix.</p>
         <p class="muted" style="margin-top:14px;max-width:52ch">Not compute-matched. One proprietary JEV version. Benchmark agreement, not adjudicated correctness. Estimates, not invoices. The paper's Limitations section is the honest reading guide.</p>
         <div class="cta" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
-          <a class="btn primary" href="#paper-link" id="cite-paper">Paper (PDF)</a>
-          <a class="btn" href="#code-link" id="cite-code">Code &amp; supplement</a>
+          <a class="btn primary" href="paper.pdf" id="cite-paper">Author manuscript (PDF)</a>
+          <a class="btn" href="https://arxiv.org/abs/2609.26550">arXiv record</a>
+          <a class="btn" href="https://github.com/yubol-bobo/jev-as-a-judge" id="cite-code">Project repository</a>
         </div>
       </div>
       <div class="rv d1">
@@ -517,7 +525,10 @@ footer p{max-width:72ch;line-height:1.55}
   author  = {Li, Yubo and Miao, Yidi and Krishnan, Ramayya
              and Padman, Rema},
   year    = {2026},
-  note    = {Preprint}
+  eprint  = {2609.26550},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.AI},
+  url     = {https://arxiv.org/abs/2609.26550}
 }</pre>
         <button class="btn" style="margin-top:10px" id="copybib" type="button">Copy BibTeX</button>
       </div>
@@ -741,10 +752,6 @@ if(reduce){layoutAcc();document.querySelectorAll('.rv').forEach(el=>el.classList
 /* ---------- copy bibtex ---------- */
 $('#copybib').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#bib').textContent);$('#copybib').textContent='Copied';setTimeout(()=>$('#copybib').textContent='Copy BibTeX',1600);}catch(e){$('#copybib').textContent='Select and copy';}});
 
-/* ---------- links (edit these two lines) ---------- */
-const PAPER_URL='paper.pdf';     // switch to the arXiv URL once listed
-const CODE_URL='https://github.com/yubol-bobo/jev-as-a-judge';     // repository (code & supplement)
-['nav-paper','hero-paper','cite-paper'].forEach(id=>$('#'+id).href=PAPER_URL);['nav-code','hero-code','cite-code'].forEach(id=>$('#'+id).href=CODE_URL);
 </script>
 </body>
 </html>

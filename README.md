@@ -1,36 +1,30 @@
-# JEV-as-a-Judge — project page
+# JEV-as-a-Judge — project website
 
-Single static page (`index.html`), no build step, no dependencies beyond Google Fonts. All numbers are typed into the `DATA` block at the bottom of `index.html` and come from the manuscript of 2026-09-21.
+Static HTML hosted at <https://yubol-bobo.github.io/jev-as-a-judge/>. No build step is required. GitHub Pages publishes the root of the `main` branch; `.nojekyll` disables Jekyll processing.
 
-## Deploy on GitHub Pages (user `yubol-bobo`, repo `jev-as-a-judge`)
+## Pages and manuscript
 
-```bash
-git init jev-as-a-judge && cd jev-as-a-judge
-cp -r /path/to/site/* .          # index.html, README.md, .nojekyll
-git add . && git commit -m "Project page"
-git branch -M main
-git remote add origin git@github.com:yubol-bobo/jev-as-a-judge.git
-git push -u origin main
-```
+- `index.html`: interactive findings, charts, and arXiv BibTeX. All paper and repository links are ordinary HTML links that work without JavaScript. Chart data remain the September 2026 manuscript measurements.
+- `paper.html`: the complete author-written abstract, title, authors, first-publication date, and Google Scholar citation metadata. It works without JavaScript or external fonts.
+- `paper.pdf`: current author manuscript, synchronized from `paper/main_arxiv.pdf` in the research workspace on 24 September 2026. The author manuscript can contain revisions beyond the arXiv version; the separate arXiv link identifies the public version history.
+- `sitemap.xml`: absolute URLs for the project homepage, abstract page, and PDF.
 
-Then on GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main` / `(root)` → Save.**
-The page appears at <https://yubol-bobo.github.io/jev-as-a-judge/> within a minute or two. `.nojekyll` keeps GitHub from running Jekyll over the folder.
+The paper is a preprint, first posted to arXiv on 22 September 2026: <https://arxiv.org/abs/2609.26550>. The site makes no journal or conference acceptance claim.
 
-If the repository also holds code, put the page in a `docs/` folder and choose `main` / `/docs` instead.
+## Updating and deploying
 
-## Two lines to edit before publishing
+Edit the HTML links directly; no JavaScript URL constants are used. When updating the manuscript, keep the hosted author PDF and the complete abstract in `paper.html` in sync. The four authors and full title should agree across the PDF, citation tags, and BibTeX. Keep `citation_pdf_url` absolute and in the same directory as the abstract page. `citation_publication_date` records the original public release, not each site edit.
 
-At the very end of `index.html`:
+Update sitemap `lastmod` only when the corresponding page or PDF materially changes. Commit the intended files and push `main` to deploy through the existing GitHub Pages configuration.
 
-```js
-const PAPER_URL='paper.pdf';     // the PDF next to index.html; switch to the arXiv URL once listed
-const CODE_URL='#code-link';     // e.g. 'https://github.com/yubol-bobo/jev-as-a-judge'
-```
+## Search indexing
 
-Every Paper / Code button on the page reads these two constants. The BibTeX block near the end of the file is a placeholder until the paper has a venue.
+1. Verify the URL-prefix property `https://yubol-bobo.github.io/jev-as-a-judge/` in Google Search Console, or use an already verified parent property. Use the actual HTML verification tag or file supplied by Google; keep it published after verification.
+2. Submit <https://yubol-bobo.github.io/jev-as-a-judge/sitemap.xml> in Search Console.
+3. Use URL Inspection for the homepage and `paper.html`, test each live URL, then request indexing.
 
-## Notes
+The root site's `robots.txt` is maintained in the separate `yubol-bobo.github.io` repository. It already permits crawling. If desired, add this project's sitemap URL there as an additional `Sitemap:` line; a `robots.txt` inside this project directory would not control crawling.
 
-- The manuscript is a preprint (September 2026); an ACL Rolling Review submission is planned. Current ACL policy has no anonymity period, so a public page is allowed, but once the paper is under review do not advertise it to the reviewing community. The page says "Preprint" and makes no acceptance claim. `paper.pdf` is the current author version; replace `PAPER_URL` with the arXiv link once it is listed.
-- Prices, latencies, and model identifiers reflect September 2026; the footer says so.
-- Motion respects `prefers-reduced-motion`. Every chart has a hover tooltip; the accuracy chart has a "View data" table.
+Google Search requests do not guarantee inclusion or submit a paper to Google Scholar. Scholar discovers academic pages independently. Manually adding an article to an author profile is separate from indexing it in Scholar search.
+
+Official references: [Google Scholar inclusion guidelines](https://scholar.google.com/intl/en/scholar/inclusion.html), [Search Console ownership verification](https://support.google.com/webmasters/answer/9008080), and [requesting Google recrawls](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl).
